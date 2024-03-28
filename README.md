@@ -101,3 +101,29 @@ We have also calculated the relative area in Square Meters of each individual po
 **2021 Landcover**
 
 ![2001 Landcover](Images/Charlotte_2021_Landcover.png)
+
+#### Submission 2
+We created a shapefile of the counties in North Carolina and South Carolina by selecting counties from two separate county boundary shapefiles to match the extent of the Charlotte metro area, then we merged these into one shapefile to clip the vector landcover files to the Charlotte metro area boundary. Before the clipping operation could be completed we had to reproject the files so that the projection matched. After we obtained the clipped shapefiles, we uploaded our vector and raster files to a postgres database using QGIS's GUI. The steps we followed to do this were:
+
+open postgreSQL menu in browser
+click new connection, fill out the form to setup connection
+click database at top of QGIS interface, click db manager
+click postGIS, open charlotteproject, click public, click import layer/file
+leave import vector layer parameters default except input
+before doing this make sure postGIS extension is enabled in the SQL database
+Once the files were in our SQL database, we used the code in the dropcolumns.sql file to delete columns that were redundant or unnecessary for our analysis. This made it so the tables did not have unnecessary dependencies.
+
+We then removed unnecessary columns from the tables, including extra geometries and IDs that were generated from editing and copying the file many times in QGIS.
+The final result consists of four tables in the charlotteproject database. Please see below for an example of each table. There are two images for each table.
+
+**Historical Landcover Table (section 1) (1970-1980)**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Historical Landcover Table (section 2)**
+![Historical Landcover Table](Images/historical1.png)  ![Historical Landcover Table](Images/historical2.png)
+
+**2001 Landcover Table (section 1)**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2001 Landcover Table (section 2)**
+![2001 Landcover Table](Images/modern01_1.png)  ![2001 Landcover Table](Images/modern01_2.png)
+
+**2011 Landcover Table (section 1)**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2011 Landcover Table (section 2)**
+![2011 Landcover Table](Images/modern11_1.png)  ![2011 Landcover Table](Images/modern11_2.png)
+
+**2021 Landcover Table (section 1)**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2021 Landcover Table (section 2)**
+![2021 Landcover Table](Images/modern21_1.png)  ![2021 Landcover Table](Images/modern21_2.png)
