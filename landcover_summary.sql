@@ -4,22 +4,7 @@ CREATE TABLE landcoverSummary AS
 SELECT 
     time_point, 
     landcover, 
-    SUM(area_sq_m) AS total_area, 
-    -- Calculate the proportion of each landcover type relative to the total landcover area across all time points
-    SUM(area_sq_m) / (
-        -- Subquery to calculate the total area of all landcover types across all time points
-        SELECT SUM(area_sq_m) 
-        FROM (
-            -- Union all the area_sq_m values from all the tables
-            SELECT area_sq_m FROM historical 
-            UNION ALL 
-            SELECT area_sq_m FROM modern01 
-            UNION ALL 
-            SELECT area_sq_m FROM modern11 
-            UNION ALL 
-            SELECT area_sq_m FROM modern21
-        ) AS all_landcover_areas
-    ) AS proportion
+    SUM(area_sq_m) AS total_area
 FROM (
     -- Subquery to combine data from all time points and calculate the sum of areas for each landcover type
     SELECT 
